@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Post</h1>
+    <h1>сообщения</h1>
 
     <table>
         <tbody>
@@ -38,14 +38,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('post_index') }}">Back to the list</a>
+            <a href="{{ path('post_index') }}">Назад к списку</a>
         </li>
         <li>
-            <a href="{{ path('post_edit', { 'id': post.id }) }}">Edit</a>
+            <a href="{{ path('post_edit', { 'id': post.id }) }}">Редактировать</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Удалить">
             {{ form_end(delete_form) }}
         </li>
     </ul>
