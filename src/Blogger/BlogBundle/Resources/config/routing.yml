@@ -1,0 +1,10 @@
+blogger_blog_post:
+    resource: "@BloggerBlogBundle/Resources/config/routing/post.yml"
+    prefix:   /post
+
+BloggerBlogBundle_homepage:
+    path:     /
+    defaults: { _controller: "BloggerBlogBundle:Page:index" }
+    requirements:
+         methods:  GET
+
