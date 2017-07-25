@@ -16,14 +16,24 @@ class PostController extends Controller
      * Lists all post entities.
      *
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT p FROM BloggerBlogBundle:Post p ORDER BY p.id DESC";
+        $query = $em->createQuery($dql);
 
-        $posts = $em->getRepository('BloggerBlogBundle:Post')->findAll();
+        /**
+         * @VAR $paginator \Knp\Component\Pager\Paginator
+         */
+        $paginator = $this->get('knp_paginator');
+        $result = $paginator->paginate(
+            $query,
+            $request->query->getInt('page', 1),
+            $request->query->getInt('limit', 15)
+        );
 
         return $this->render('post/index.html.twig', array(
-            'posts' => $posts,
+            'posts' => $result,
         ));
     }
 

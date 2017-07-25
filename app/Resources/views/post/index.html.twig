@@ -7,12 +7,12 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Username</th>
-                <th>Email</th>
+                <th>{{ knp_pagination_sortable(posts, 'User Name', 'p.userName') }}</th>
+                <th>{{ knp_pagination_sortable(posts, 'Email', 'p.eMail') }}</th>
                 <th>Text</th>
                 <th>Ip</th>
                 <th>Useragent</th>
-                <th>Createdat</th>
+                <th>{{ knp_pagination_sortable(posts, 'Created At', 'p.createdAt') }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -40,6 +40,10 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(posts) }}
+    </div>
 
     <ul>
         <li>
